@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Testimonials – Aspire Parking & Guest Services LLC</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #e8c97a;
+    --gold-dark: #9a7a2e;
+    --black: #0a0a0a;
+    --dark: #111111;
+    --dark2: #1a1a1a;
+    --dark3: #222222;
+    --gray: #888;
+    --white: #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--black); color: var(--white); font-family: 'Montserrat', sans-serif; overflow-x: hidden; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 4rem;
+    background: rgba(10,10,10,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+    transition: padding 0.4s;
+  }
+  .nav-logo { display: flex; align-items: center; gap: 0.8rem; text-decoration: none; }
+  .nav-logo-text { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 600; letter-spacing: 0.2em; color: var(--gold); text-transform: uppercase; }
+  .nav-logo-sub { font-size: 0.55rem; letter-spacing: 0.35em; color: var(--gray); display: block; margin-top: -2px; text-transform: uppercase; }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; transition: color 0.3s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+  .nav-cta {
+    background: transparent; border: 1px solid var(--gold);
+    color: var(--gold); padding: 0.6rem 1.5rem;
+    font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase;
+    text-decoration: none; transition: all 0.3s;
+  }
+  .nav-cta:hover { background: var(--gold); color: var(--black); }
+
+  /* PAGE HERO */
+  .page-hero {
+    min-height: 60vh;
+    display: flex; align-items: flex-end;
+    padding: 0 4rem 5rem;
+    position: relative; overflow: hidden;
+    background: var(--black);
+  }
+  .page-hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 70% 60% at 70% 30%, rgba(201,168,76,0.07) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 50% at 5% 80%, rgba(201,168,76,0.04) 0%, transparent 60%);
+  }
+  .page-hero-line {
+    position: absolute; top: 0; left: 4rem; width: 1px; height: 100%;
+    background: linear-gradient(to bottom, transparent, rgba(201,168,76,0.3), transparent);
+  }
+  .page-hero-content { position: relative; z-index: 1; max-width: 700px; }
+  .breadcrumb {
+    font-size: 0.62rem; letter-spacing: 0.4em; color: rgba(255,255,255,0.3);
+    text-transform: uppercase; margin-bottom: 1.5rem;
+  }
+  .breadcrumb a { color: var(--gold); text-decoration: none; }
+  .breadcrumb span { margin: 0 0.5rem; }
+  .page-hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 7vw, 6rem);
+    font-weight: 300; line-height: 1; margin-bottom: 1.5rem;
+  }
+  .page-hero h1 em { color: var(--gold); font-style: italic; }
+  .page-hero p { color: rgba(255,255,255,0.45); font-size: 0.95rem; line-height: 1.8; font-weight: 300; max-width: 520px; }
+
+  /* SHARED */
+  .section-label {
+    font-size: 0.62rem; letter-spacing: 0.5em; color: var(--gold);
+    text-transform: uppercase; margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .section-label::after { content: ''; flex: 0 0 40px; height: 1px; background: var(--gold); opacity: 0.5; }
+  h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 4vw, 3.5rem); font-weight: 300; line-height: 1.1; }
+  h2 em { color: var(--gold); font-style: italic; }
+
+  /* FEATURED QUOTE */
+  #featured {
+    padding: 8rem 4rem 6rem;
+    background: var(--dark);
+    position: relative;
+    overflow: hidden;
+  }
+  .featured-bg-mark {
+    position: absolute;
+    top: 3rem; left: 3rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28rem;
+    line-height: 1;
+    color: rgba(201,168,76,0.04);
+    pointer-events: none;
+    user-select: none;
+    font-weight: 600;
+  }
+  .featured-inner {
+    position: relative; z-index: 1;
+    max-width: 860px; margin: 0 auto; text-align: center;
+  }
+  .featured-stars {
+    display: flex; justify-content: center; gap: 0.3rem;
+    margin-bottom: 3rem;
+  }
+  .star { color: var(--gold); font-size: 0.85rem; letter-spacing: 0.2em; }
+  .featured-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.9rem, 4vw, 3rem);
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.45;
+    color: var(--white);
+    margin-bottom: 3rem;
+  }
+  .featured-quote em { color: var(--gold); font-style: normal; }
+  .featured-divider {
+    width: 40px; height: 1px;
+    background: var(--gold); opacity: 0.5;
+    margin: 0 auto 1.8rem;
+  }
+  .featured-name {
+    font-size: 0.78rem; letter-spacing: 0.3em; color: var(--white);
+    text-transform: uppercase; font-weight: 500; margin-bottom: 0.4rem;
+  }
+  .featured-role {
+    font-size: 0.68rem; letter-spacing: 0.2em; color: rgba(255,255,255,0.35);
+    text-transform: uppercase;
+  }
+
+  /* TESTIMONIALS GRID */
+  #testimonials {
+    padding: 7rem 4rem;
+    background: var(--black);
+  }
+  .testimonials-header { margin-bottom: 5rem; }
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(201,168,76,0.08);
+    border: 1px solid rgba(201,168,76,0.08);
+  }
+  .t-card {
+    background: var(--dark2);
+    padding: 3rem 2.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.35s;
+  }
+  .t-card:hover { background: var(--dark3); }
+  .t-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0;
+    width: 100%; height: 2px;
+    background: linear-gradient(to right, var(--gold), transparent);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.45s;
+  }
+  .t-card:hover::before { transform: scaleX(1); }
+  .t-mark {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 5rem; line-height: 0.8;
+    color: rgba(201,168,76,0.15);
+    margin-bottom: 1.5rem;
+    display: block;
+    font-weight: 600;
+  }
+  .t-type {
+    font-size: 0.58rem; letter-spacing: 0.4em; color: var(--gold);
+    text-transform: uppercase; margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  .t-type::before { content: ''; display: inline-block; width: 20px; height: 1px; background: var(--gold); opacity: 0.6; }
+  .t-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1.65;
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 2rem;
+  }
+  .t-footer {
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding-top: 1.5rem;
+  }
+  .t-name {
+    font-size: 0.72rem; letter-spacing: 0.2em;
+    color: var(--white); text-transform: uppercase;
+    font-weight: 500; margin-bottom: 0.3rem;
+  }
+  .t-context {
+    font-size: 0.65rem; letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.3); text-transform: uppercase;
+  }
+
+  /* STAT STRIP */
+  #stats {
+    padding: 5rem 4rem;
+    background: var(--dark2);
+    border-top: 1px solid rgba(201,168,76,0.1);
+    border-bottom: 1px solid rgba(201,168,76,0.1);
+  }
+  .stats-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1px; background: rgba(201,168,76,0.08);
+    border: 1px solid rgba(201,168,76,0.08);
+  }
+  .stat-block {
+    background: var(--dark3);
+    padding: 3rem 2.5rem;
+    text-align: center;
+  }
+  .stat-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 6vw, 5rem);
+    font-weight: 300; color: var(--gold);
+    line-height: 1; margin-bottom: 0.8rem;
+  }
+  .stat-label {
+    font-size: 0.65rem; letter-spacing: 0.3em;
+    color: rgba(255,255,255,0.35); text-transform: uppercase;
+    line-height: 1.7;
+  }
+
+  /* CTA */
+  #cta {
+    padding: 8rem 4rem;
+    background: var(--black);
+    text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .cta-bg {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 70% at 50% 50%, rgba(201,168,76,0.05) 0%, transparent 70%);
+  }
+  .cta-inner { position: relative; z-index: 1; max-width: 600px; margin: 0 auto; }
+  .cta-inner h2 { margin-bottom: 1.5rem; }
+  .cta-inner p {
+    color: rgba(255,255,255,0.4); font-size: 0.9rem;
+    line-height: 1.9; font-weight: 300; margin-bottom: 3rem;
+  }
+  .cta-links { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
+  .btn-gold {
+    background: var(--gold); color: var(--black);
+    padding: 1rem 2.5rem; border: none; cursor: pointer;
+    font-family: 'Montserrat', sans-serif; font-size: 0.72rem;
+    letter-spacing: 0.25em; text-transform: uppercase; font-weight: 600;
+    text-decoration: none; transition: all 0.3s; display: inline-block;
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  }
+  .btn-gold:hover { background: var(--gold-light); }
+  .btn-outline {
+    background: transparent; border: 1px solid rgba(201,168,76,0.4);
+    color: rgba(255,255,255,0.6); padding: 1rem 2.5rem;
+    font-family: 'Montserrat', sans-serif; font-size: 0.72rem;
+    letter-spacing: 0.25em; text-transform: uppercase;
+    text-decoration: none; transition: all 0.3s; display: inline-block;
+  }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* FOOTER */
+  footer {
+    background: var(--black); border-top: 1px solid rgba(201,168,76,0.15);
+    padding: 3rem 4rem;
+    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem;
+  }
+  .footer-logo-text { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; letter-spacing: 0.2em; color: var(--gold); }
+  .footer-copy { font-size: 0.65rem; color: rgba(255,255,255,0.25); letter-spacing: 0.1em; margin-top: 0.3rem; }
+  .footer-tagline { font-size: 0.7rem; color: rgba(255,255,255,0.3); letter-spacing: 0.2em; font-style: italic; }
+  .footer-links { display: flex; gap: 2rem; }
+  .footer-links a { color: rgba(255,255,255,0.35); text-decoration: none; font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; transition: color 0.3s; }
+  .footer-links a:hover { color: var(--gold); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .fade-up { opacity: 0; animation: fadeUp 0.7s forwards; }
+  .delay-1 { animation-delay: 0.15s; }
+  .delay-2 { animation-delay: 0.3s; }
+  .delay-3 { animation-delay: 0.45s; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .page-hero { padding: 0 1.5rem 4rem; }
+    #featured, #testimonials, #stats, #cta { padding: 5rem 1.5rem; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .stats-grid { grid-template-columns: 1fr; }
+    footer { flex-direction: column; text-align: center; padding: 2rem 1.5rem; }
+    .footer-links { justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="aspire-parking.html" class="nav-logo">
+    <svg viewBox="0 0 40 40" fill="none" width="36" height="36">
+      <polygon points="20,2 38,36 2,36" stroke="#C9A84C" stroke-width="2.5" fill="none"/>
+      <polygon points="20,10 32,34 8,34" fill="rgba(201,168,76,0.12)"/>
+      <line x1="20" y1="10" x2="20" y2="34" stroke="#C9A84C" stroke-width="1.5"/>
+      <line x1="10" y1="28" x2="30" y2="28" stroke="#C9A84C" stroke-width="1.5"/>
+    </svg>
+    <div>
+      <span class="nav-logo-text">ASPIRE</span>
+      <span class="nav-logo-sub">Parking & Guest Services</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="aspire-about.html">About</a></li>
+    <li><a href="aspire-parking.html#services">Services</a></li>
+    <li><a href="aspire-parking.html#venues">Venues</a></li>
+    <li><a href="aspire-parking.html#values">Values</a></li>
+    <li><a href="aspire-careers.html">Careers</a></li>
+    <li><a href="aspire-testimonials.html" class="active">Testimonials</a></li>
+    <li><a href="aspire-parking.html#contact">Contact</a></li>
+  </ul>
+  <a href="aspire-parking.html#contact" class="nav-cta">Request a Quote</a>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-line"></div>
+  <div class="page-hero-content">
+    <div class="breadcrumb fade-up">
+      <a href="aspire-parking.html">Home</a>
+      <span>›</span> Testimonials
+    </div>
+    <h1 class="fade-up delay-1">Heard From<br>Our <em>Guests</em></h1>
+    <p class="fade-up delay-2">Excellence is not what we say about ourselves — it is what others say when we are not in the room. These are the moments that define Aspire.</p>
+  </div>
+</div>
+
+<!-- FEATURED QUOTE -->
+<section id="featured">
+  <div class="featured-bg-mark">"</div>
+  <div class="featured-inner fade-up">
+    <div class="featured-stars">
+      <span class="star">★</span>
+      <span class="star">★</span>
+      <span class="star">★</span>
+      <span class="star">★</span>
+      <span class="star">★</span>
+    </div>
+    <p class="featured-quote">
+      "They didn't just park our guests' cars — they set the tone for the entire evening. From the moment the first car pulled up, our guests felt like they were arriving somewhere <em>truly special</em>."
+    </p>
+    <div class="featured-divider"></div>
+    <div class="featured-name">Marcus & Diane Holloway</div>
+    <div class="featured-role">Private Estate Wedding · Buckhead, Atlanta</div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS GRID -->
+<section id="testimonials">
+  <div class="testimonials-header">
+    <div class="section-label">Client Voices</div>
+    <h2>What People Are <em>Saying</em></h2>
+  </div>
+
+  <div class="testimonials-grid">
+
+    <div class="t-card">
+      <span class="t-mark">"</span>
+      <div class="t-type">Venue Partner</div>
+      <p class="t-quote">
+        "In this industry, the valet team is often an afterthought — but Aspire made them a highlight. Our guests consistently ask who handled the parking. That never happened before."
+      </p>
+      <div class="t-footer">
+        <div class="t-name">Renée Okafor</div>
+        <div class="t-context">Event Director · Upscale Atlanta Venue</div>
+      </div>
+    </div>
+
+    <div class="t-card">
+      <span class="t-mark">"</span>
+      <div class="t-type">Event Guest</div>
+      <p class="t-quote">
+        "I've been to hundreds of events. I can count on one hand the times I felt genuinely welcomed the moment I stepped out of my car. Aspire is on that list."
+      </p>
+      <div class="t-footer">
+        <div class="t-name">Theodore Wynn</div>
+        <div class="t-context">Guest · Corporate Gala · Midtown Atlanta</div>
+      </div>
+    </div>
+
+    <div class="t-card">
+      <span class="t-mark">"</span>
+      <div class="t-type">Client Partner</div>
+      <p class="t-quote">
+        "Professionalism is rare. Warmth is rarer. Finding both in a single team — at every shift, every event — is something I stopped expecting. Aspire reminded me it's possible."
+      </p>
+      <div class="t-footer">
+        <div class="t-name">Camille Tran</div>
+        <div class="t-context">Private Events Coordinator · Atlanta, GA</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- STAT STRIP -->
+<section id="stats">
+  <div class="stats-grid">
+    <div class="stat-block">
+      <div class="stat-number">100%</div>
+      <div class="stat-label">Client Retention<br>Since Launch</div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-number">5★</div>
+      <div class="stat-label">Average Rating<br>Across All Events</div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-number">0</div>
+      <div class="stat-label">Incidents Reported<br>On Our Watch</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="cta-bg"></div>
+  <div class="cta-inner">
+    <div class="section-label" style="justify-content: center;">Work With Us</div>
+    <h2>Ready to <em>Elevate</em><br>Your Event?</h2>
+    <p>Every arrival is an opportunity to make a lasting impression. Let Aspire be the first thing your guests remember — and the detail they talk about long after.</p>
+    <div class="cta-links">
+      <a href="aspire-parking.html#contact" class="btn-gold">Request a Quote →</a>
+      <a href="aspire-about.html" class="btn-outline">Learn About Us</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-logo-text">ASPIRE</div>
+    <div class="footer-copy">© 2025 Aspire Parking & Guest Services LLC · Atlanta, GA</div>
+  </div>
+  <div class="footer-tagline">"Elevating Every Arrival."</div>
+  <div class="footer-links">
+    <a href="aspire-parking.html">Home</a>
+    <a href="aspire-about.html">About</a>
+    <a href="aspire-parking.html#services">Services</a>
+    <a href="aspire-testimonials.html">Testimonials</a>
+    <a href="aspire-parking.html#contact">Contact</a>
+  </div>
+</footer>
+
+<script>
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    if (window.scrollY > 50) {
+      nav.style.padding = '0.8rem 4rem';
+    } else {
+      nav.style.padding = '1.2rem 4rem';
+    }
+  });
+
+  // Scroll-triggered fade-ins for cards
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.t-card, .stat-block').forEach((el, i) => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(28px)';
+    el.style.transition = `opacity 0.6s ease ${i * 0.1}s, transform 0.6s ease ${i * 0.1}s`;
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>
